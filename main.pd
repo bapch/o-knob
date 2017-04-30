@@ -1,4 +1,6 @@
-#N canvas 404 128 1174 825 10;
+#N canvas 0 84 1920 996 10;
+#X declare -path ../../o-knob;
+#X declare -path o-knob;
 #X obj 744 163 cnv 15 400 450 empty empty page_2 20 12 0 14 -154742
 -66577 0;
 #X obj 188 163 cnv 15 400 450 empty empty page_1 20 12 0 14 -154742
@@ -49,7 +51,7 @@
 #X floatatom 1058 205 5 0 0 0 display_only - -, f 5;
 #X obj 958 706 cnv 15 100 60 empty empty page_3 20 12 0 14 -154742
 -66577 0;
-#N canvas 349 52 1495 992 presets 0;
+#N canvas 366 52 1495 992 presets 0;
 #X obj 452 99 int;
 #X obj 704 103 int;
 #X obj 704 81 * 2;
@@ -92,23 +94,19 @@
 #X msg 207 796 \; o2-lfo-amp 0.898438 \; o2-lfo-freq 0.310547 \; o2-amp
 0.72168 \; o2-freq 0.544922 \; o1-amp 0.589844 \; o1-lfo-freq 0.352539
 \; o1-lfo-amp 0.855469 \; o1-freq 0.496094 \;;
-#X msg 477 796;
 #X msg 618 796;
-#X msg 757 796;
+#X msg 757 796 \; o2-lfo-freq 0.996094 \; o2-amp 0 \; o1-lfo-amp 0.996094
+\; o1-lfo-freq 0 \; o1-amp 0.99707 \; o1-freq 0 \; o2-lfo-amp 0 \;
+o2-freq 0.99707 \;;
 #X msg 888 796;
 #X msg 1028 796;
 #X msg 1165 796;
 #X msg 1307 796;
-#X floatatom 755 60 5 0 0 0 - - -, f 5;
 #X text 25 736 Your presets are here. You can have as much presets
 as you want. Note that you can only save floats !;
 #X obj 197 422 s o-get-params;
 #X obj 341 461 r o-params;
 #X obj 229 303 r o-save;
-#X text 294 303 << RESERVED;
-#X text 305 423 << RESERVED;
-#X text 415 462 << RESERVED;
-#X text 684 299 << RESERVED;
 #X obj 617 299 r o-load;
 #X text 710 315 you can load a preset or save current parameters to
 a preset by sending a integer to o-load or o-save;
@@ -127,26 +125,21 @@ a preset by sending a integer to o-load or o-save;
 #X obj 1307 772 r o-preset-9;
 #X obj 974 49 cnv 15 450 80 empty empty empty 20 12 0 14 -154742 -66577
 0;
-#X text 978 54 This is the third page. As the knobs are only useful
-on this page and not a part of the synth \, we can use the second outlet
-only (no hidden update of the ouput value). Also \, note that these
-knobs do not have a unique name \, because it's not useful to save
-their state in a preset.;
 #X text 632 12 do it ! (turn from left to right);
-#X msg 347 796 \; o2-lfo-amp 0 \; o2-lfo-freq 0.804688 \; o2-amp 0
-\; o1-amp 0.99707 \; o1-lfo-freq 0.805664 \; o1-lfo-amp 0 \; o2-freq
-0.395508 \; o1-freq 0.635742 \;;
-#X obj 260 525 print;
 #X obj 768 119 loadbang;
-#X msg 27 796 \; o2-lfo-amp 0.99707 \; o2-lfo-freq 0.182617 \; o2-amp
-0.301758 \; o1-amp 0.818359 \; o1-lfo-freq 0.0556641 \; o1-lfo-amp
-0.782227 \; o2-freq 0.848633 \; o1-freq 0.253906 \;;
-#X msg 766 145 -1;
-#X obj 766 218 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 350 55 o-knob 3 2 0.02;
-#X obj 28 61 o-knob 3 1 0.2;
-#X obj 639 36 o-knob 3 3 0.02;
+#X msg 768 145 -1;
+#X text 982 54 As the knobs are only useful on this page and not a
+part of the synth \, we can use the second outlet only (no hidden update
+of the ouput value). Also \, note that these knobs do not have a unique
+name \, because it's not useful to save their state in a preset.;
+#X msg 477 796;
+#X msg 347 796;
+#X msg 27 796 \; o2-lfo-freq 0.410156 \; o2-amp 0.413086 \; o1-lfo-amp
+0.84375 \; o1-lfo-freq 0.138672 \; o1-amp 0.612305 \; o1-freq 0.0869141
+\; o2-lfo-amp 0.712891 \; o2-freq 0.634766 \;;
+#X obj 29 61 o-knob 3 1;
+#X obj 350 56 o-knob 3 2;
+#X obj 639 36 o-knob 3 3;
 #X connect 0 0 37 0;
 #X connect 0 0 16 1;
 #X connect 0 0 21 0;
@@ -157,7 +150,6 @@ their state in a preset.;
 #X connect 4 1 5 0;
 #X connect 5 0 6 0;
 #X connect 6 0 7 0;
-#X connect 6 0 79 0;
 #X connect 7 0 8 0;
 #X connect 8 0 15 0;
 #X connect 11 0 14 0;
@@ -171,11 +163,11 @@ their state in a preset.;
 #X connect 16 0 17 0;
 #X connect 17 0 22 0;
 #X connect 17 0 35 0;
-#X connect 17 1 60 0;
+#X connect 17 1 54 0;
 #X connect 17 1 36 0;
-#X connect 22 0 49 0;
-#X connect 22 1 59 0;
-#X connect 22 2 58 0;
+#X connect 22 0 47 0;
+#X connect 22 1 53 0;
+#X connect 22 2 52 0;
 #X connect 23 0 25 0;
 #X connect 25 0 30 0;
 #X connect 25 1 29 1;
@@ -185,40 +177,30 @@ their state in a preset.;
 #X connect 29 0 28 0;
 #X connect 30 0 29 0;
 #X connect 30 1 24 1;
-#X connect 50 0 75 0;
-#X connect 50 0 23 0;
-#X connect 51 0 22 0;
-#X connect 56 0 60 0;
-#X connect 59 0 23 1;
-#X connect 61 0 77 0;
-#X connect 62 0 39 0;
-#X connect 63 0 74 0;
-#X connect 64 0 40 0;
-#X connect 65 0 41 0;
-#X connect 66 0 42 0;
-#X connect 67 0 43 0;
-#X connect 68 0 44 0;
-#X connect 69 0 45 0;
-#X connect 70 0 46 0;
-#X connect 76 0 78 0;
-#X connect 78 0 5 0;
-#X connect 80 1 12 0;
-#X connect 81 1 13 0;
-#X connect 82 1 31 0;
-#X connect 82 1 2 0;
-#X connect 82 1 47 0;
+#X connect 48 0 23 0;
+#X connect 49 0 22 0;
+#X connect 50 0 54 0;
+#X connect 53 0 23 1;
+#X connect 55 0 72 0;
+#X connect 56 0 39 0;
+#X connect 57 0 71 0;
+#X connect 58 0 70 0;
+#X connect 59 0 40 0;
+#X connect 60 0 41 0;
+#X connect 61 0 42 0;
+#X connect 62 0 43 0;
+#X connect 63 0 44 0;
+#X connect 64 0 45 0;
+#X connect 67 0 68 0;
+#X connect 68 0 5 0;
+#X connect 73 1 13 0;
+#X connect 74 1 12 0;
+#X connect 75 1 31 0;
+#X connect 75 1 2 0;
 #X restore 971 737 pd presets;
-#X obj 201 190 o-knob 1 1 0.02 o1-freq;
-#X obj 757 190 o-knob 2 1 0.02 o2-freq;
-#X obj 201 511 o-knob 1 4 0.02 o1-lfo-amp;
-#X obj 201 381 o-knob 1 3 0.02 o1-lfo-freq;
-#X obj 201 291 o-knob 1 2 0.02 o1-amp;
-#X obj 757 300 o-knob 2 2 0.02 o2-amp;
-#X obj 757 390 o-knob 2 3 0.02 o2-lfo-freq;
-#X obj 757 510 o-knob 2 4 0.02 o2-lfo-amp;
 #X obj 768 706 cnv 15 100 60 empty empty empty 20 12 0 14 -154742 -66577
 0;
-#N canvas 14 50 430 439 browsing 0;
+#N canvas 23 50 503 439 browsing 0;
 #X obj 49 50 r aux;
 #X obj 49 72 sel 1;
 #X msg 49 94 1;
@@ -239,9 +221,8 @@ screenLine4 : \;;
 #X msg 89 283 symbol OSC2;
 #X obj 89 221 s o-page-selected;
 #X obj 179 117 s o-load;
-#X text 216 222 << RESERVED;
-#X text 243 117 << RESERVED;
-#X obj 178 54 delay 500;
+#X obj 178 54 delay 1000;
+#X text 328 164 *clear the screen*;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
@@ -250,7 +231,7 @@ screenLine4 : \;;
 #X connect 4 0 7 0;
 #X connect 5 0 10 0;
 #X connect 6 0 2 0;
-#X connect 6 0 21 0;
+#X connect 6 0 19 0;
 #X connect 7 0 3 1;
 #X connect 9 0 18 0;
 #X connect 10 0 12 0;
@@ -263,16 +244,12 @@ screenLine4 : \;;
 #X connect 13 0 14 0;
 #X connect 15 0 14 0;
 #X connect 16 0 14 0;
-#X connect 21 0 9 0;
+#X connect 19 0 9 0;
 #X restore 778 728 pd browsing;
 #X obj 188 12 cnv 15 956 150 empty empty no_im_not_hiding 20 20 0 12
 -154742 -262144 0;
-#X obj 191 15 cnv 15 950 144 empty empty O-knob!_(for_Organelle) 20
-20 0 24 -245564 -154742 0;
-#X text 690 48 This simple example is a duophonic synth with 2 LFOs.
-Use the AUX button to browse through the pages. Click the [pd browsing]
-\, [pd presets] and [o-knob] abstractions to understand how they work.
-;
+#X obj 191 15 cnv 15 950 144 empty empty O-knob!_v2_"Smoking_Pots"_(for_Organelle)
+20 20 0 24 -245564 -154742 0;
 #X text 690 121 Contact : patchstorage.com/author/baptiste or baptiste.chatel@gmail.com
 ;
 #X text 224 48 It is a very simple knob/parameter page system and preset
@@ -281,7 +258,61 @@ is tied to a knob. When you browse through pages \, the knob may not
 be in sync with the new corresponding parameter. There are several
 ways to get it in sync. Instead of making the parameter jump to the
 knob value \, you need to pick it up by dialing the knob to the location
-you left it last time. Don't dial too fast \, though !;
+you left it last time.;
+#X text 1196 58 argument 1 : PAGE NUMBER - integer: The page number
+on which is this parameter.;
+#X text 1196 87 argument 2 : KNOB NUMBER - integer: which knob is it
+?;
+#X text 690 48 This simple example is a duophonic synth with 2 LFOs.
+Use the AUX button to browse through the pages.;
+#X text 1178 264 Open [pd presets] to see how to handle presets.;
+#X text 1177 162 You can send floats to [s UNIQUE NAME] to override
+the pot value. Sending a bang to [s o-get-params] will send a name-value
+pair to [r o-params] if it exists.;
+#X text 1177 226 See [pd browsing] to get a grasp about how to browse
+through pages.;
+#N canvas 6 50 440 271 RESERVED 0;
+#X obj 241 123 s o-get-params;
+#X obj 241 104 r o-params;
+#X obj 241 66 r o-save;
+#X obj 241 85 r o-load;
+#X obj 241 142 s o-page-selected;
+#X text 19 25 These names are reserved ! Don't use them unless you
+know what you're doing !;
+#X text 17 73 GOOD USE EXAMPLES \; -save values to preset \; -load
+preset \; -receive parameters \; -get parameters \; -select a page
+\;;
+#X text 16 178 WRONG USE EXAMPLES \; -using one of these for anything
+but one of the good examples above \; -naming your child;
+#X restore 849 790 pd RESERVED NAMES;
+#X text 1176 31 Usage : [o-knob [page number] [knob number] [receive-name]]
+, f 92;
+#X obj 758 190 o-knob 2 1 o2-freq;
+#X text 1178 599 KNOWN ISSUES \; -Due to the [threshold] \, it's sometimes
+hard to pick extreme values as 0.99707 in [0:0.99707], f 49;
+#X obj 757 510 o-knob 2 4 o2-lfo-amp;
+#X obj 201 191 o-knob 1 1 o1-freq;
+#X obj 201 291 o-knob 1 2 o1-amp;
+#X obj 201 381 o-knob 1 3 o1-lfo-freq;
+#X obj 201 511 o-knob 1 4 o1-lfo-amp;
+#X obj 758 300 o-knob 2 2 o2-amp;
+#X obj 757 390 o-knob 2 3 o2-lfo-freq;
+#X obj 1248 387 declare -path ../../o-knob;
+#X obj 838 666 declare -path o-knob;
+#X text 1175 318 TIP : the o-knob library folder can be placed in /usbdrive
+\, at the same level as the Patches folder. If you do so \, you need
+to [declare] the o-knob library folder in your patch as follows :;
+#X text 1195 111 argument 3 : UNIQUE NAME - symbol. The name of the
+parameter you want to save. optional;
+#X text 1179 658 TO DO \; -make it a state machine -remove all user
+doc from browsing and presets \; -make real help files \; -make browsing
+and presets abstractions instead of subpatches \; -install guide;
+#X text 1177 431 CHANGELOG for v2 \; -Added [threshold 0.001] to prevent
+pot noise \; -Changed pick-up method from "we're close enough" to "we're
+past the old value" \, fast dialing is now possible \; -Removed need
+for tolerance argument - WHEN UPDATING PLEASE REMOVE ALL TOLERANCE
+ARGUMENTS (0.02 typically) OTHERWISE IT WON'T WORK -Moved existing
+documentation to example patch, f 49;
 #X connect 2 0 3 0;
 #X connect 3 0 8 0;
 #X connect 4 0 2 0;
@@ -313,23 +344,23 @@ you left it last time. Don't dial too fast \, though !;
 #X connect 31 0 39 0;
 #X connect 32 0 27 0;
 #X connect 33 0 41 0;
-#X connect 48 0 4 0;
-#X connect 48 0 42 0;
-#X connect 48 1 24 0;
-#X connect 48 1 43 0;
-#X connect 49 0 11 0;
-#X connect 49 0 44 0;
-#X connect 49 1 25 0;
-#X connect 49 1 45 0;
-#X connect 50 0 7 1;
-#X connect 50 1 30 0;
-#X connect 51 0 5 0;
-#X connect 51 1 29 0;
-#X connect 52 0 3 1;
-#X connect 52 1 28 0;
-#X connect 53 0 10 1;
-#X connect 53 1 31 0;
-#X connect 54 0 12 0;
-#X connect 54 1 32 0;
-#X connect 55 0 22 1;
-#X connect 55 1 33 0;
+#X connect 62 0 11 0;
+#X connect 62 0 44 0;
+#X connect 62 1 25 0;
+#X connect 62 1 45 0;
+#X connect 64 0 22 1;
+#X connect 64 1 33 0;
+#X connect 65 0 4 0;
+#X connect 65 0 42 0;
+#X connect 65 1 24 0;
+#X connect 65 1 43 0;
+#X connect 66 0 3 1;
+#X connect 66 1 28 0;
+#X connect 67 0 5 0;
+#X connect 67 1 29 0;
+#X connect 68 0 7 1;
+#X connect 68 1 30 0;
+#X connect 69 0 10 1;
+#X connect 69 1 31 0;
+#X connect 70 0 12 0;
+#X connect 70 1 32 0;
