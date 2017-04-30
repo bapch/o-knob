@@ -1,0 +1,109 @@
+#N canvas 388 73 1109 791 10;
+#X obj 185 439 spigot;
+#X obj 272 417 sel 0 1;
+#X obj 249 375 == \$1;
+#X obj 185 700 outlet value;
+#X text 296 375 is it my page ?;
+#X obj 185 339 r knob\$2;
+#X obj 395 699 outlet value_for_display;
+#X obj 249 397 t f f f;
+#X obj 185 636 t f f;
+#X obj 185 525 f;
+#X obj 185 551 pack f f;
+#X msg 185 573 \$2 \$1;
+#X obj 185 598 route 1 0;
+#X obj 122 445 t f f;
+#X text 371 524 if it's my page \, spit actual value first;
+#X text 375 601 route [on my page AND value] and [NOT my page AND value]
+;
+#X text 42 250 baptiste.chatel@gmail.com 2017;
+#X obj 122 287 inlet not from a knob;
+#X text 290 289 input a value from a preset system;
+#X text 366 475 override the stored value if we've moved the knob close
+to the stored value;
+#X obj 33 612 f;
+#X obj 20 298 r \$4;
+#X obj 33 634 t b f;
+#X obj 33 691 pack s f;
+#X text 183 721 hidden value update \, suitable for audio parameters
+, f 21;
+#X msg 33 720 \; o-params add \$1 \$2;
+#X obj 249 340 r o-page-selected;
+#X text 61 46 argument 1 : PAGE NUMBER - integer: The page number on
+which is this parameter.;
+#X text 61 75 argument 2 : KNOB NUMBER - integer: which knob is it
+?;
+#X text 61 92 argument 3 : TOLERANCE - float: used to determine if
+the knob is almost exactly reached its old value. Tolerance of 2-5%
+is usually ok for fine pot fiddling \, but to little for power pot
+rotation... Turn slowly.;
+#X text 61 148 argument 4 : UNIQUE NAME - symbol. Only used to save
+and recall presets. Not mandatory.;
+#X obj 33 535 r o-get-params;
+#X text 41 198 You can send floats to [s UNIQUE NAME] to override the
+pot value. Sending a bang to [s o-get-params] will send a name-value
+pair to [r o-params] if it exists.;
+#X text 41 19 Usage : [o-knob [page number] [knob number] [tolerance
+for takeover] [receive-name]], f 92;
+#X text 389 721 visible value update \, only for display or for page-only
+parameters, f 26;
+#N canvas 5 50 450 300 init 0;
+#X obj 184 136 spigot;
+#X obj 197 81 loadbang;
+#X msg 197 103 1;
+#X obj 184 158 t f b;
+#X msg 238 150 0;
+#X obj 184 37 inlet;
+#X obj 184 190 outlet;
+#X text 184 236 [once];
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 1;
+#X connect 3 0 6 0;
+#X connect 3 1 4 0;
+#X connect 4 0 0 1;
+#X connect 5 0 0 0;
+#X restore 290 451 pd init;
+#X text 365 416 if it's my page \, unlock and refresh display if it's
+not \, lock;
+#X obj 185 476 takeover, f 23;
+#X obj 20 347 route float;
+#X obj 33 661 symbol_argument \$4;
+#X obj 432 339 loadbang;
+#X obj 432 361 \$3;
+#X text 591 699 Tip : scale and trim precision of this output according
+to screen estate and common sense. Who can dial to a precision of 10^-6
+? Full precision output is for the left one !;
+#X connect 0 0 37 0;
+#X connect 1 0 37 1;
+#X connect 1 1 9 0;
+#X connect 2 0 7 0;
+#X connect 5 0 0 0;
+#X connect 5 0 35 0;
+#X connect 7 0 0 1;
+#X connect 7 1 1 0;
+#X connect 7 2 10 1;
+#X connect 8 0 3 0;
+#X connect 8 1 6 0;
+#X connect 9 0 10 0;
+#X connect 9 0 20 1;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 8 0;
+#X connect 12 1 3 0;
+#X connect 13 0 9 0;
+#X connect 13 1 37 2;
+#X connect 17 0 13 0;
+#X connect 20 0 22 0;
+#X connect 21 0 38 0;
+#X connect 22 0 39 0;
+#X connect 22 1 23 1;
+#X connect 23 0 25 0;
+#X connect 26 0 2 0;
+#X connect 31 0 20 0;
+#X connect 35 0 37 2;
+#X connect 37 0 9 0;
+#X connect 38 0 13 0;
+#X connect 39 0 23 0;
+#X connect 40 0 41 0;
+#X connect 41 0 37 3;
