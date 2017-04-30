@@ -15,7 +15,7 @@ Have fun !
 * no sudden value jump, no value crossfeed between pages
 * scale and offset your values according to use : who needs to display a 10^-6 precision always-changing number ? This is for your synth, not for the user !
 * no need to patch your display messages twice as with most other page system attempts!
-* once your pot value is overriden by a recall, its LOCKED. It won’t move until you want it to move.
+* once your pot value is overridden by a recall, its LOCKED. It won’t move until you want it to move.
 
 **Cons (by design)**
 * won’t work atm if you open two o-knob enabled patches, because you can’t isolate two different o-knob systems, though for recall only it should work well.
