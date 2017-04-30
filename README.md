@@ -25,7 +25,7 @@ Have fun !
 I’m open to suggestion about modifications, though i really think it’s enough for my use and most Organelle patches.
 
 If you ever need a crazy full-featured state-saving system, i highly recommend kollabs/ds : https://github.com/m—w/kollabs
-## CHANGELOG for v2;
+## CHANGELOG for v2
 * Added [threshold 0.001] to prevent pot noise
 * Changed pick-up method from “we’re close enough” to “we’re past the old value”, fast dialing is now possible
 * Removed need for tolerance argument :
@@ -36,9 +36,8 @@ If you ever need a crazy full-featured state-saving system, i highly recommend k
 * Due to the [threshold], it’s sometimes (really rarely) hard to pick extreme values as 0.99707 in [0:0.99707]
 
 ## TO DO
-* Sound-on-sound option (disable earsing head)
+* non-saved parameters should be allowed to jump instead of waiting user to reach stored value
 * make it a state machine
 * remove all user doc from browsing and presets
 * make real help files
 * make browsing and presets abstractions instead of subpatches
-* install guide
