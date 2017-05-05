@@ -36,6 +36,7 @@ If you ever need a crazy full-featured state-saving system, i highly recommend k
 * Due to the [threshold], it’s sometimes (really rarely) hard to pick extreme values as 0.99707 in [0:0.99707]
 
 ## TO DO
+* save presets outside the patch (txt file-s)
 * non-saved parameters should be allowed to jump instead of waiting user to reach stored value
 * make it a state machine
 * remove all user doc from browsing and presets
