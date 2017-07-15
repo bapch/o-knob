@@ -1,10 +1,10 @@
-#N canvas 557 102 1095 702 10;
+#N canvas 554 114 1095 702 10;
 #X obj 453 178 spigot;
 #X obj 537 177 sel 0 1;
-#X obj 517 114 == \$1;
+#X obj 517 134 == \$1;
 #X obj 453 509 outlet value;
-#X text 564 114 is it my page ?;
-#X obj 453 49 r knob\$2;
+#X text 564 134 is it my page ?;
+#X obj 413 19 r knob\$2;
 #X obj 663 508 outlet value_for_display;
 #X obj 453 445 t f f;
 #X obj 453 334 f;
@@ -15,19 +15,19 @@
 #X text 639 333 if it's my page \, spit actual value first;
 #X text 643 410 route [on my page AND value] and [NOT my page AND value]
 ;
-#X obj 390 30 inlet not from a knob;
-#X text 558 28 input a value from a preset system;
+#X obj 390 0 inlet not from a knob;
+#X text 558 -2 input a value from a preset system;
 #X obj 301 421 f;
 #X obj 301 443 t b f;
 #X obj 301 500 pack s f;
 #X text 451 530 hidden value update \, suitable for audio parameters
 , f 21;
 #X msg 301 529 \; o-params add \$1 \$2;
-#X obj 517 87 r o-page-selected;
+#X obj 517 107 r o-page-selected;
 #X obj 301 344 r o-get-params;
 #X text 657 530 visible value update \, only for display or for page-only
 parameters, f 26;
-#X text 598 137 if it's my page \, unlock and refresh display if it's
+#X text 598 157 if it's my page \, unlock and refresh display if it's
 not \, lock;
 #X obj 288 65 route float;
 #X obj 39 89 loadbang;
@@ -45,8 +45,8 @@ unique one, f 32;
 to the stored value;
 #X text 6 579 [o-knob] v2 - o-knob library - baptiste.chatel@gmail.com
 ;
-#X obj 453 68 threshold 0.001;
-#X obj 517 136 t f f f b;
+#X obj 453 88 threshold 0.001;
+#X obj 517 156 t f f f b;
 #X obj 145 70 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X msg 537 197 0, f 2;
@@ -56,12 +56,13 @@ to the stored value;
 #X obj 37 447 print;
 #X obj 37 326 t b b;
 #X obj 37 390 pack f f;
+#X obj 413 41 expr ($f1*(1+0.002))-0.001;
+#X obj 413 63 t f f;
 #X connect 0 0 36 0;
 #X connect 1 0 42 0;
 #X connect 1 1 8 0;
 #X connect 2 0 40 0;
-#X connect 5 0 33 0;
-#X connect 5 0 39 0;
+#X connect 5 0 49 0;
 #X connect 7 0 3 0;
 #X connect 7 1 6 0;
 #X connect 8 0 9 0;
@@ -102,3 +103,6 @@ to the stored value;
 #X connect 47 0 43 0;
 #X connect 47 1 44 0;
 #X connect 48 0 45 0;
+#X connect 49 0 50 0;
+#X connect 50 0 33 0;
+#X connect 50 1 39 0;
